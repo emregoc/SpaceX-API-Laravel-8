@@ -1,66 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1><p align="center">Laravel 8, SpaceX API, Laravel Passport, Swagger </p></h1>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<h3>
+    Projenin Heroku Adresi : https://vast-sands-21729.herokuapp.com/api/documentation
+</h3>
 </p>
 
-## About Laravel
+## Projede ki API'lerin testi için
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Register ile post istegi gönderip kayıt işlemi tamamlanmalı.
+- Mail ve şifre girilip giriş yapılmalı. Dönen response verisindeki token kopyalanmalı ve Authorize'a eklenmeli.
+- Auth işlemi tamamlandıktan sonra diğer GET isteklerini kullanabilirsiniz.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Proje Clone işlemi ve Gerekli paketlerin kurulumu
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Projeyi reposunu git ile kendi localinize klonladıktan sonra;
 
-## Learning Laravel
+- composer install ile paketler yüklenmeli.
+- Authentication işlemleri için Laravel passport paketi kurulmalı
+- Özel oluşturulan "php artisan send:data" komutu sayesinde event listener çalıştırılır.
+- php artisan schedule:work komutunu çalıştırdıktan sonra her 3 dakikada özel komut "php artisan send:data" çalışır, admin kullanıcıya mail gönderilir ve Spacex API si ile veritabanı senkronizasyonu sağlanır.
+- Authentication işlemleri için Laravel passport paketi kurulmalı
+- Swagger ile API dökümantasyonu kurulumu için https://github.com/DarkaOnLine/L5-Swagger adresinden yararlanabilirsiniz.
+- Swagger dökümantasyonunu aktif etmek için php artisan l5-swagger:generate komutu calıstırılmalı
+- Swagger dökümantasyonuna ulaşmak için php artisan serve yazıldıktan sonra http://localhost:8000/api/documentation adresinden ulasilabilir.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## SpaceX API
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Tüm Kapsüller API'si : https://api.spacexdata.com/v3/capsules
+- Kapsül durumuna göre API : https://api.spacexdata.com/v3/capsules?status=active
+- Seri numarasına göre API : https://api.spacexdata.com/v3/capsules/C112
 
-## Laravel Sponsors
+## Projenin Endpointleri
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    Projede yazılan endpointler Repository Pattern kullanılarak yazılmıştır.
+    Projede Event Listener kullanılmıştır.
 
-### Premium Partners
+- User Register API (POST): http://localhost:8000/api/register
+- User Login API (POST): http://localhost:8000/api/login
+- User Logout API (GET): http://localhost:8000/api/logout
+- Tüm Kapsüller API'si (GET): http://localhost:8000/api/capsules
+- Kapsül durumuna göre API (GET): http://localhost:8000/api/capsules?status=active|retired|unknown|etc
+- Seri numarasına göre API (GET): http://localhost:8000/api/capsules/{capsule_serial}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+### Pojenin Ekran Çıktıları
+<details>
+<summary>Swagger</summary>
+<img src="https://user-images.githubusercontent.com/56219956/145467380-64a0d2a5-d1d0-4c7c-ba7e-d4b00088641f.png" width="500">
+</details>
+<details>
+<summary>Log</summary>
+<img src="https://user-images.githubusercontent.com/56219956/145467413-01483b5c-4670-4b33-9f4c-ced8f59c98bd.png" width="500">
+</details>
+<details>
+<summary>Mail</summary>
+<img src="https://user-images.githubusercontent.com/56219956/145467438-825ee0bd-69d5-4f65-8cae-6156108c9cad.png" width="500">
+</details>
+<details>
+<summary>Sync</summary>
+<img src="https://user-images.githubusercontent.com/56219956/145467449-fbed029d-c30b-4018-be31-6b9401f6f99f.png" width="500">
+</details>
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
