@@ -9,7 +9,7 @@
 ## Projede ki API'lerin testi için
 
 - Register ile post istegi gönderip kayıt işlemi tamamlanmalı.
-- Mail ve şifre girilip giriş yapılmalı. Dönen response verisindeki token kopyalanmalı ve Authorize'a eklenmeli.
+- Kayıt olunan Mail ve şifreyle giriş yapılmalı. Dönen response verisindeki token kopyalanmalı ve Authorize'a eklenmeli.
 - Auth işlemi tamamlandıktan sonra diğer GET isteklerini kullanabilirsiniz.
 
 ## Proje Clone işlemi ve Gerekli paketlerin kurulumu
